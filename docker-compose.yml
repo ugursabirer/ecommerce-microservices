@@ -1,0 +1,70 @@
+services:
+  # User Service için PostgreSQL
+  postgres-user:
+    image: postgres:15-alpine
+    container_name: postgres-user
+    environment:
+      POSTGRES_DB: userdb
+      POSTGRES_USER: useruser
+      POSTGRES_PASSWORD: userpass123
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres-user-data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U useruser -d userdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    command: redis-server --requirepass redis123
+    ports:
+      - "6379:6379"
+    networks:
+      - ecommerce-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - ecommerce-network
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Consul (Service Discovery)
+  consul:
+    image: hashicorp/consul:1.17
+    container_name: consul
+    command: agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0
+    ports:
+      - "8500:8500"
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
+
+volumes:
+  postgres-user-data:
