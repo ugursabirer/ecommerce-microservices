@@ -1,17 +1,28 @@
 # E-Ticaret Mikroservis Platformu
 
-Modern mikroservis mimarisi ile geliştirilmiş e-ticaret platformu.
+Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret platformu.
 
 ## 🏗️ Mimari
 
-- **User Service**: .NET Core 8.0 - Kullanıcı yönetimi ve authentication
-- **Altyapı**: PostgreSQL, Redis, RabbitMQ, Consul
+### Mikroservisler
+- **User Service**: .NET Core 8.0 - JWT authentication, kullanıcı yönetimi
+- **API Gateway**: Spring Cloud Gateway - Routing, load balancing
+- **Eureka Server**: Netflix Eureka - Service discovery
 
-## 🚀 Başlangıç
+### Altyapı
+- **Databases**: PostgreSQL (per service)
+- **Cache**: Redis
+- **Message Broker**: RabbitMQ
+- **Service Discovery**: Eureka (Spring), Consul (.NET)
+- **Monitoring**: Prometheus, Grafana, Jaeger, ELK Stack
+- **Storage**: MinIO (S3-compatible)
+
+## 🚀 Hızlı Başlangıç
 
 ### Gereksinimler
-- Docker Desktop
+- Docker Desktop 20.10+
 - .NET 8.0 SDK
+- Java 17+ (Spring servisleri için)
 - Git
 
 ### Kurulum
