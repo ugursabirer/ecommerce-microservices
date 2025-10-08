@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using UserService.Data;
 using UserService.Repositories;
 using UserService.Services;
+using Steeltoe.Discovery.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+// Eureka Service Discovery
+builder.Services.AddDiscoveryClient(builder.Configuration);
 
 // Controllers
 builder.Services.AddControllers();
