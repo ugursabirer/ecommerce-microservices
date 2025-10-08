@@ -1,26 +1,26 @@
-# E-Ticaret Mikroservis Platformu
+# E-Commerce Microservices Platform
 
-Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret platformu. Scalable, resilient ve cloud-native özelliklere sahip enterprise-grade çözüm.
+A production-ready e-commerce platform built with modern microservices architecture. Scalable, resilient, and cloud-native enterprise-grade solution.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4)](https://dotnet.microsoft.com/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.6-6DB33F)](https://spring.io/projects/spring-boot)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)](https://www.docker.com/)
 
-## 📋 İçindekiler
+## 📋 Table of Contents
 
-- [Mimari Genel Bakış](#mimari-genel-bakış)
-- [Özellikler](#özellikler)
-- [Teknolojiler](#teknolojiler)
-- [Hızlı Başlangıç](#hızlı-başlangıç)
-- [API Dokümantasyonu](#api-dokümantasyonu)
-- [Servis Detayları](#servis-detayları)
-- [Test](#test)
-- [Proje İlerlemesi](#proje-i̇lerlemesi)
+- [Architecture Overview](#architecture-overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [API Documentation](#api-documentation)
+- [Service Details](#service-details)
+- [Testing](#testing)
+- [Project Progress](#project-progress)
 
 ---
 
-## 🏗️ Mimari Genel Bakış
+## 🏗️ Architecture Overview
 
 ```
                                     ┌─────────────────┐
@@ -47,36 +47,36 @@ Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret plat
             └──────────────────────────────────────────┘
 ```
 
-### Mikroservisler
+### Microservices
 
-| Servis | Teknoloji | Durum | Port | Açıklama |
-|--------|-----------|-------|------|----------|
-| **User Service** | .NET Core 8.0 | ✅ Tamamlandı | 5048 | JWT authentication, kullanıcı yönetimi, profil |
-| **Product Service** | Spring Boot 3.5.6 | ✅ Tamamlandı | 8081 | Ürün kataloğu, CRUD, kategori yönetimi |
-| **Order Service** | Spring Boot 3.5.6 | 🔄 Planlı | 8082 | Sipariş yönetimi, Saga Pattern |
-| **Payment Service** | .NET Core 8.0 | 📋 Planlı | 5049 | Ödeme işlemleri, entegrasyon |
-| **Notification Service** | Node.js | 📋 Planlı | 3001 | Email, SMS, push bildirimleri |
+| Service | Technology | Status | Port | Description |
+|---------|-----------|--------|------|-------------|
+| **User Service** | .NET Core 8.0 | ✅ Completed | 5048 | JWT authentication, user management, profile |
+| **Product Service** | Spring Boot 3.5.6 | ✅ Completed | 8081 | Product catalog, CRUD, category management |
+| **Order Service** | Spring Boot 3.5.6 | 🔄 Planned | 8082 | Order management, Saga Pattern |
+| **Payment Service** | .NET Core 8.0 | 📋 Planned | 5049 | Payment processing, integration |
+| **Notification Service** | Node.js | 📋 Planned | 3001 | Email, SMS, push notifications |
 
-### Altyapı Bileşenleri
+### Infrastructure Components
 
-| Bileşen | Versiyon | Port | Durum | Amaç |
-|---------|----------|------|-------|------|
-| **API Gateway** | Spring Cloud Gateway | 8080 | ✅ Aktif | Routing, load balancing, rate limiting |
-| **Eureka Server** | Netflix Eureka | 8761 | ✅ Aktif | Service discovery ve registry |
-| **Consul** | 1.15 | 8500 | ✅ Aktif | .NET servisleri için service discovery |
-| **PostgreSQL** | 15 | 5435 | ✅ Aktif | Her servis için ayrı database |
-| **Redis** | 7 | 6379 | ✅ Aktif | Caching, session management |
-| **RabbitMQ** | 3 | 5672, 15672 | ✅ Aktif | Event-driven communication |
-| **MinIO** | Latest | 9000, 9001 | ✅ Aktif | Object storage (S3-compatible) |
-| **Prometheus** | Latest | 9090 | 🔄 Planlı | Metrics collection |
-| **Grafana** | Latest | 3000 | 🔄 Planlı | Monitoring dashboards |
-| **Jaeger** | Latest | 16686 | 🔄 Planlı | Distributed tracing |
+| Component | Version | Port | Status | Purpose |
+|-----------|---------|------|--------|---------|
+| **API Gateway** | Spring Cloud Gateway | 8080 | ✅ Active | Routing, load balancing, rate limiting |
+| **Eureka Server** | Netflix Eureka | 8761 | ✅ Active | Service discovery and registry |
+| **Consul** | 1.15 | 8500 | ✅ Active | Service discovery for .NET services |
+| **PostgreSQL** | 15 | 5435 | ✅ Active | Separate database per service |
+| **Redis** | 7 | 6379 | ✅ Active | Caching, session management |
+| **RabbitMQ** | 3 | 5672, 15672 | ✅ Active | Event-driven communication |
+| **MinIO** | Latest | 9000, 9001 | ✅ Active | Object storage (S3-compatible) |
+| **Prometheus** | Latest | 9090 | 🔄 Planned | Metrics collection |
+| **Grafana** | Latest | 3000 | 🔄 Planned | Monitoring dashboards |
+| **Jaeger** | Latest | 16686 | 🔄 Planned | Distributed tracing |
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-### Tamamlanan Özellikler ✅
+### Completed Features ✅
 
 - **Authentication & Authorization**
   - JWT-based authentication
@@ -85,28 +85,28 @@ Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret plat
   - BCrypt password hashing
 
 - **Service Discovery**
-  - Eureka Server ile Spring servisleri otomatik kayıt
-  - Consul ile .NET servisleri entegrasyonu
-  - Health check mekanizması
+  - Automatic registration with Eureka Server for Spring services
+  - Consul integration for .NET services
+  - Health check mechanism
 
 - **API Gateway**
-  - Merkezi routing yönetimi
+  - Centralized routing management
   - Load balancing
-  - Service discovery entegrasyonu
+  - Service discovery integration
   - Health check endpoints
 
 - **Product Management**
-  - CRUD operasyonları
-  - Kategori bazlı filtreleme
-  - Pagination ve sorting
+  - CRUD operations
+  - Category-based filtering
+  - Pagination and sorting
   - PostgreSQL persistence
 
 - **Containerization**
-  - Tüm servisler Docker-ready
+  - All services Docker-ready
   - Docker Compose orchestration
   - Multi-stage build optimization
 
-### Geliştirme Aşamasında 🔄
+### In Development 🔄
 
 - Order Service (Saga Pattern)
 - Event-driven communication (RabbitMQ)
@@ -115,17 +115,20 @@ Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret plat
 
 ### Roadmap 📋
 
-- Payment gateway entegrasyonu
+- Payment gateway integration
 - Notification service
 - Shopping cart service
 - Inventory management
 - API rate limiting
 - Circuit breaker pattern (Resilience4j)
 - Kubernetes deployment
+- CI/CD pipeline (GitHub Actions)
+- Integration tests
+- Performance tests (JMeter/K6)
 
 ---
 
-## 🛠️ Teknolojiler
+## 🛠️ Tech Stack
 
 ### Backend Frameworks
 - **.NET Core 8.0** - User Service, modern C# features
@@ -166,9 +169,9 @@ Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret plat
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## 🚀 Quick Start
 
-### Gereksinimler
+### Prerequisites
 
 ```
 ✅ Docker Desktop 20.10+
@@ -176,43 +179,43 @@ Modern mikroservis mimarisi ile geliştirilmiş, production-ready e-ticaret plat
 ✅ Java 17+ (JDK)
 ✅ Maven 3.8+
 ✅ Git
-✅ 8GB+ RAM (Docker için)
+✅ 8GB+ RAM (for Docker)
 ```
 
-### Kurulum
+### Installation
 
-**1. Projeyi klonla**
+**1. Clone the repository**
 
 ```bash
 git clone <repository-url>
 cd ecommerce-microservices
 ```
 
-**2. Docker altyapısını başlat**
+**2. Start Docker infrastructure**
 
 ```bash
 docker-compose up -d
 ```
 
-Servisler şu sırayla başlayacak:
+Services will start in this order:
 - PostgreSQL, Redis, RabbitMQ, MinIO, Consul
 - Eureka Server
 - User Service, Product Service
 - API Gateway
 
-**3. Servislerin durumunu kontrol et**
+**3. Check service status**
 
 ```bash
 docker-compose ps
 ```
 
-Tüm servisler `healthy` durumda olmalı.
+All services should be in `healthy` state.
 
 **4. Service Discovery Dashboard**
 
 Eureka: http://localhost:8761
 
-Tüm servislerin kayıtlı olduğunu göreceksiniz.
+You should see all services registered.
 
 ### Local Development
 
@@ -247,15 +250,15 @@ Health check: http://localhost:8080/actuator/health
 
 ---
 
-## 📡 API Dokümantasyonu
+## 📡 API Documentation
 
-### API Gateway - Ana Giriş Noktası
+### API Gateway - Main Entry Point
 
-Tüm istekler API Gateway üzerinden yönlendirilir: `http://localhost:8080`
+All requests are routed through API Gateway: `http://localhost:8080`
 
 ### User Service Routes (`/api/auth/*`)
 
-#### Register - Yeni Kullanıcı Kaydı
+#### Register - New User Registration
 ```http
 POST /api/auth/register
 Content-Type: application/json
@@ -281,7 +284,7 @@ Content-Type: application/json
 }
 ```
 
-#### Login - Kullanıcı Girişi
+#### Login - User Authentication
 ```http
 POST /api/auth/login
 Content-Type: application/json
@@ -306,13 +309,13 @@ Content-Type: application/json
 }
 ```
 
-#### Get Profile - Kullanıcı Profili (Authentication Required)
+#### Get Profile - User Profile (Authentication Required)
 ```http
 GET /api/auth/profile
 Authorization: Bearer {token}
 ```
 
-#### Refresh Token - Token Yenileme
+#### Refresh Token - Token Renewal
 ```http
 POST /api/auth/refresh
 Content-Type: application/json
@@ -333,7 +336,7 @@ Response: "Healthy"
 
 ### Product Service Routes (`/api/products/*`)
 
-#### Get All Products - Tüm Ürünleri Listele
+#### Get All Products - List All Products
 ```http
 GET /api/products?page=0&size=10&sort=name,asc
 ```
@@ -404,18 +407,18 @@ GET /api/products/category/{category}
 
 ---
 
-## 🧪 Test
+## 🧪 Testing
 
-### Health Check - Tüm Servislerin Durumu
+### Health Check - All Services Status
 
 ```bash
 # API Gateway
 curl http://localhost:8080/actuator/health
 
-# User Service (Gateway üzerinden)
+# User Service (via Gateway)
 curl http://localhost:8080/api/auth/health
 
-# Product Service (Gateway üzerinden)
+# Product Service (via Gateway)
 curl http://localhost:8080/api/products/health
 
 # Eureka Dashboard
@@ -424,7 +427,7 @@ curl http://localhost:8761
 
 ### Authentication Flow Test
 
-**1. Kullanıcı Kaydı:**
+**1. User Registration:**
 ```bash
 curl -X POST http://localhost:8080/api/auth/register \
   -H "Content-Type: application/json" \
@@ -447,9 +450,9 @@ curl -X POST http://localhost:8080/api/auth/login \
   }'
 ```
 
-Token'ı kopyala ve sonraki isteklerde kullan.
+Copy the token and use it in subsequent requests.
 
-**3. Profil Getir:**
+**3. Get Profile:**
 ```bash
 curl http://localhost:8080/api/auth/profile \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
@@ -457,7 +460,7 @@ curl http://localhost:8080/api/auth/profile \
 
 ### Product Service Test
 
-**1. Ürün Oluştur:**
+**1. Create Product:**
 ```bash
 curl -X POST http://localhost:8080/api/products \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
@@ -471,14 +474,14 @@ curl -X POST http://localhost:8080/api/products \
   }'
 ```
 
-**2. Ürünleri Listele:**
+**2. List Products:**
 ```bash
 curl http://localhost:8080/api/products
 ```
 
-### Test Kullanıcıları
+### Test Users
 
-Önceden oluşturulmuş test hesabı:
+Pre-created test account:
 ```
 Email: test@example.com
 Password: Test1234
@@ -486,11 +489,11 @@ Password: Test1234
 
 ---
 
-## 🗂️ Servis Detayları
+## 🗂️ Service Details
 
-### Servis Portları
+### Service Ports
 
-| Servis/Component | Internal Port | External Port | Docker Network |
+| Service/Component | Internal Port | External Port | Docker Network |
 |-----------------|---------------|---------------|----------------|
 | API Gateway | 8080 | 8080 | ecommerce-network |
 | User Service | 5048 | 5048 | ecommerce-network |
@@ -506,7 +509,7 @@ Password: Test1234
 
 ### Database Schema
 
-Her mikroservis kendi PostgreSQL database'ini kullanır:
+Each microservice uses its own PostgreSQL database:
 
 - `userservice` - User Service database
 - `productservice` - Product Service database
@@ -514,34 +517,34 @@ Her mikroservis kendi PostgreSQL database'ini kullanır:
 
 ---
 
-## 📊 Proje İlerlemesi
+## 📊 Project Progress
 
-### İlerleme Durumu: **%65**
+### Current Progress: **65%**
 
-#### ✅ Tamamlanan (Phase 1 & 2)
+#### ✅ Completed (Phase 1 & 2)
 
-- [x] Docker altyapı kurulumu (PostgreSQL, Redis, RabbitMQ, Consul, MinIO)
+- [x] Docker infrastructure setup (PostgreSQL, Redis, RabbitMQ, Consul, MinIO)
 - [x] Eureka Server - Service Discovery
-- [x] API Gateway - Routing ve load balancing
+- [x] API Gateway - Routing and load balancing
 - [x] User Service - Authentication & JWT
 - [x] User Service - Docker containerization
-- [x] Product Service - CRUD operasyonları
+- [x] Product Service - CRUD operations
 - [x] Product Service - Docker containerization
-- [x] Gateway → User Service entegrasyonu
-- [x] Gateway → Product Service entegrasyonu
-- [x] Swagger documentation (her servis için)
-- [x] Service-to-service communication temel yapısı
+- [x] Gateway → User Service integration
+- [x] Gateway → Product Service integration
+- [x] Swagger documentation (for each service)
+- [x] Service-to-service communication foundation
 
-#### 🔄 Devam Eden (Phase 3)
+#### 🔄 In Progress (Phase 3)
 
-- [ ] Order Service - Sipariş yönetimi
+- [ ] Order Service - Order management
 - [ ] Saga Pattern implementation
 - [ ] RabbitMQ event-driven communication
 - [ ] Circuit breaker pattern (Resilience4j)
 
-#### 📋 Planlanan (Phase 4+)
+#### 📋 Planned (Phase 4+)
 
-- [ ] Payment Service - Ödeme entegrasyonu
+- [ ] Payment Service - Payment integration
 - [ ] Notification Service - Email/SMS/Push
 - [ ] Shopping Cart Service
 - [ ] Inventory Management
@@ -561,55 +564,55 @@ Her mikroservis kendi PostgreSQL database'ini kullanır:
 
 ---
 
-## 🐳 Docker Komutları
+## 🐳 Docker Commands
 
-### Temel İşlemler
+### Basic Operations
 
 ```bash
-# Tüm servisleri başlat
+# Start all services
 docker-compose up -d
 
-# Belirli bir servisi başlat
+# Start specific service
 docker-compose up -d user-service
 
-# Logları canlı izle
+# Follow logs live
 docker-compose logs -f
 
-# Belirli bir servisin loglarını izle
+# Follow specific service logs
 docker-compose logs -f user-service
 
-# Çalışan container'ları listele
+# List running containers
 docker-compose ps
 
-# Servisleri durdur
+# Stop services
 docker-compose stop
 
-# Servisleri durdur ve container'ları sil
+# Stop and remove containers
 docker-compose down
 
-# Servisleri durdur, container'ları ve volume'leri sil
+# Stop, remove containers and volumes
 docker-compose down -v
 
-# Image'leri yeniden build et
+# Rebuild images
 docker-compose build
 
-# Image'leri build et ve servisleri başlat
+# Build and start services
 docker-compose up -d --build
 ```
 
 ### Debugging
 
 ```bash
-# Container içine bash ile gir
+# Enter container with bash
 docker exec -it user-service bash
 
-# Container'ın resource kullanımını gör
+# View container resource usage
 docker stats
 
-# Belirli bir container'ın detaylı bilgisi
+# Detailed container information
 docker inspect user-service
 
-# Network bilgilerini gör
+# View network information
 docker network ls
 docker network inspect ecommerce-network
 ```
@@ -617,13 +620,13 @@ docker network inspect ecommerce-network
 ### Maintenance
 
 ```bash
-# Kullanılmayan image'leri temizle
+# Clean unused images
 docker image prune -a
 
-# Kullanılmayan volume'leri temizle
+# Clean unused volumes
 docker volume prune
 
-# Sistemi temizle (dikkatli kullan!)
+# Clean system (use carefully!)
 docker system prune -a --volumes
 ```
 
@@ -631,57 +634,57 @@ docker system prune -a --volumes
 
 ## 🔧 Troubleshooting
 
-### Yaygın Sorunlar ve Çözümleri
+### Common Issues and Solutions
 
-**1. Port çakışması:**
+**1. Port conflicts:**
 ```bash
-# Kullanılan portları kontrol et
+# Check used ports
 netstat -ano | findstr :8080
 
-# Alternatif: Docker portlarını değiştir
-# docker-compose.yml dosyasında port mapping'i değiştir
+# Alternative: Change Docker ports
+# Modify port mapping in docker-compose.yml
 ```
 
-**2. Service discovery çalışmıyor:**
+**2. Service discovery not working:**
 ```bash
-# Eureka dashboard'u kontrol et
+# Check Eureka dashboard
 http://localhost:8761
 
-# Servisin Eureka'ya kayıt olup olmadığını kontrol et
+# Check if service registered with Eureka
 docker-compose logs eureka-server
 docker-compose logs user-service
 ```
 
-**3. Database bağlantı hatası:**
+**3. Database connection error:**
 ```bash
-# PostgreSQL'in çalıştığını kontrol et
+# Check PostgreSQL is running
 docker-compose ps postgres
 
-# Database loglarını kontrol et
+# Check database logs
 docker-compose logs postgres
 
-# Container'a bağlan ve database'i kontrol et
+# Connect to container and check database
 docker exec -it postgres psql -U admin -d userservice
 ```
 
 **4. Out of memory:**
 ```bash
-# Docker'a daha fazla RAM ayır
+# Allocate more RAM to Docker
 # Docker Desktop → Settings → Resources → Memory
 ```
 
 ---
 
-## 📚 Ek Kaynaklar
+## 📚 Additional Resources
 
-### Dokümantasyon
+### Documentation
 - [Swagger - User Service](http://localhost:5048/swagger)
 - [Swagger - Product Service](http://localhost:8081/swagger-ui.html)
 - [Eureka Dashboard](http://localhost:8761)
 - [RabbitMQ Management](http://localhost:15672) (guest/guest)
 - [MinIO Console](http://localhost:9001) (minioadmin/minioadmin)
 
-### Repository Yapısı
+### Repository Structure
 
 ```
 ecommerce-microservices/
@@ -702,7 +705,7 @@ ecommerce-microservices/
 
 ---
 
-## 🤝 Katkıda Bulunma
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create feature branch (`git checkout -b feature/AmazingFeature`)
@@ -712,29 +715,29 @@ ecommerce-microservices/
 
 ---
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📞 İletişim
+## 📞 Contact
 
 Project Link: [https://github.com/username/ecommerce-microservices](https://github.com/username/ecommerce-microservices)
 
 ---
 
-## 🏆 Teşekkürler
+## 🏆 Acknowledgments
 
-Bu proje, modern mikroservis mimarisini öğrenmek ve uygulamak amacıyla geliştirilmiştir. Şu teknolojileri kullanarak:
+This project was developed to learn and implement modern microservices architecture using:
 
-- Spring Cloud ekosistemi
-- .NET Core mikroservis best practices
+- Spring Cloud ecosystem
+- .NET Core microservice best practices
 - Docker containerization
 - Service mesh patterns
 
 ---
 
-**Son Güncelleme:** 8 Ekim 2025  
-**Versiyon:** 0.6.5-alpha  
-**Durum:** Active Development 🚀
+**Last Updated:** October 8, 2025  
+**Version:** 0.6.5-alpha  
+**Status:** Active Development 🚀
