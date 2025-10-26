@@ -28,9 +28,9 @@ A production-ready e-commerce platform built with modern microservices architect
                                     │  (Port: 8080)   │
                                     └────────┬────────┘
                                              │
-                    ┌────────────────────────┼────────────────────────┐
-                    │                        │                        │
-            ┌───────▼────────┐      ┌───────▼────────┐      ┌───────▼────────┐
+                     ┌───────────────────────┼───────────────────────┐
+                     │                       │                       │
+            ┌────────▼───────┐      ┌────────▼───────┐      ┌────────▼───────┐
             │  User Service  │      │Product Service │      │ Order Service  │
             │   (.NET 8.0)   │      │ (Spring Boot)  │      │ (Spring Boot)  │
             │  Port: 5048    │      │  Port: 8081    │      │  Port: 8082    │
@@ -709,7 +709,7 @@ Each microservice uses its own PostgreSQL database:
 
 ### Sprint Planning
 
-**Current Sprint:** Sprint 4 (Servisler Arası İletişim & Event-Driven)  
+**Current Sprint:** Sprint 4 (Inter-Service Communication & Event-Driven)  
 **Next Sprint:** Sprint 5 (Payment & Notification Services)
 
 ---
